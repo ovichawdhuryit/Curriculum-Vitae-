@@ -1,0 +1,243 @@
+\documentclass[10pt, letterpaper]{article}
+
+% -------------------- PACKAGES & SETTINGS (UNCHANGED) --------------------
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm
+]{geometry}
+\usepackage{multicol}
+
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage[
+    pdftitle={Anik Chawdhury's CV},
+    pdfauthor={Anik Chawdhury},
+    pdfcreator={LaTeX},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+\raggedright
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+\newenvironment{highlights}{
+\begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, itemsep=0pt, leftmargin=10pt]
+}{\end{itemize}}
+
+\newenvironment{onecolentry}{
+\begin{adjustwidth}{0cm}{0cm}
+}{\end{adjustwidth}}
+
+\newenvironment{twocolentry}[2][]{
+\onecolentry
+\def\secondColumn{#2}
+\setcolumnwidth{\fill, 4.5 cm}
+\begin{paracol}{2}
+}{
+\switchcolumn \raggedleft \secondColumn
+\end{paracol}
+\endonecolentry
+}
+
+\newenvironment{header}{
+\centering\linespread{1.5}
+}{}
+
+% -------------------- DOCUMENT --------------------
+\begin{document}
+
+\begin{header}
+{\fontsize{25 pt}{25 pt}\selectfont Anik Chawdhury}
+
+\vspace{5 pt}
+
+Dhaka, Bangladesh $|$
+\href{mailto:chawdhury22205131115@diu.edu.bd}{chawdhury22205131115@diu.edu.bd} $|$
+01613-718077 $|$
+\href{https://sites.google.com/diu.edu.bd/anik-chawdhury/home}{Google Site} $|$
+\href{https://www.linkedin.com/in/anik-chawdhury/}{LinkedIn} $|$
+\href{https://github.com/ovichawdhuryit}{GitHub}
+\end{header}
+
+% -------------------- OVERVIEW --------------------
+\section{Summary}
+\begin{onecolentry}
+\justifying
+% Prospective PhD researcher with a focused interest in Machine Learning and Artificial Intelligence, particularly in efficient fine-tuning and human alignment of large language models. Currently pursuing a B.Sc. in Electrical and Electronic Engineering, with peer-reviewed conference publications in LLM fine-tuning and preference optimization. Experienced in translating theoretical AI concepts into practical systems under limited computational resources, and motivated to pursue doctoral research in scalable and trustworthy AI.
+
+AI/ML Engineer focused on large language model (LLM) fine-tuning, NLP, and efficient deep learning
+systems. Experience in building and evaluating transformer-based models under resource constraints. Co-author
+of multiple peer-reviewed papers in LoRA-based fine-tuning and human-aligned AI. Interested in developing
+scalable, reliable AI systems for real-world applications.
+\end{onecolentry}
+
+% -------------------- EDUCATION --------------------
+\section{Education}
+
+\begin{twocolentry}{Expected June 2026}
+\textbf{Daffodil International University}, \hfill June 2026 \\
+B.Sc. in Electrical and Electronic Engineering
+\end{twocolentry}
+
+% \begin{twocolentry}{2018}
+% \textbf{Bogura Government College}, Higher Secondary Certificate (HSC)
+% \end{twocolentry}
+% \begin{onecolentry}
+% \begin{highlights}
+% \item GPA: 4.86 / 5.00
+% \end{highlights}
+% \end{onecolentry}
+
+\section{Skills}
+\begin{tabular}{ p{4.2cm} p{11.8cm} }
+\textbf{Programming} & Python, C++, MATLAB \\
+\textbf{Research Tools} & Transformers, PEFT, Scikit-learn \\
+\textbf{Research Tools} & Google Colab, Jupyter Notebook \\
+\textbf{Development} & VS Code, GitHub, Git  \\
+\textbf{Hardware } & Arduino, ESP32, ESP8266 \\
+\end{tabular}
+
+% -------------------- PROJECTS --------------------
+\section{Selected Projects}
+
+\textbf{Enhancing Genre Fidelity in Children’s Story Generation via Fine-Tuned LLMs}
+\begin{onecolentry}
+\begin{highlights}
+\item Designed a genre-conditioned story generation framework using LLaMA-2 (7B) fine-tuned with PEFT-LoRA.
+\item Evaluated genre adherence using a transformer-based classifier achieving 97.56\% accuracy.
+\item Tools: Python, HuggingFace Transformers, Scikit-learn, Google Colab
+\end{highlights}
+\end{onecolentry}
+
+\textbf{IoT-Based AI-Controlled Smart EV Charging and Protection System}
+\begin{onecolentry}
+\begin{highlights}
+\item Developed an intelligent EV charging and protection framework with real-time monitoring and fault detection.
+\item Implemented over-voltage and over-current protection using sensor-driven control logic.
+\item Tools: ESP32, Arduino, C++, IoT platforms
+\end{highlights}
+\end{onecolentry}
+
+\textbf{Smart Agriculture System}
+\begin{onecolentry}
+\begin{highlights}
+\item Built an IoT-based system for remote monitoring of soil moisture and environmental conditions.
+\item Tools: ESP8266, Blynk, C++
+\end{highlights}
+\end{onecolentry}
+
+\textbf{Magnetic Levitation System}
+\begin{onecolentry}
+\begin{highlights}
+\item Implemented a closed-loop electromagnetic levitation prototype using sensor feedback.
+\item Tools: Analog and digital hardware
+\end{highlights}
+\end{onecolentry}
+
+% -------------------- PUBLICATIONS --------------------
+\section{Publications}
+\begin{itemize}
+
+\item \textbf{A. Chawdhury et al.}, “LoRGen: A Two-Stage LLM Framework for Human-Aligned LoR Generation via Efficient Fine-Tuning and Direct Preference Optimization,” \textit{Proceedings of the 28th International Conference on Computer and Information Technology (ICCIT 2025)}, Cox’s Bazar, Bangladesh. \textbf{Top 2\% Paper}.
+
+\item \textbf{S. Pramanik, S. Bhattacharjee, T. Fouzder, A. A. Azad, A. Chawdhury}, “Enhancing Emotion Classification with Interpretability Using LoRA-Finetuned LLaMA-3.2-3B,” \textit{Accepted at the 11th IEEE International Women in Engineering Conference on Electrical and Computer Engineering (WIECON-ECE 2025)}, Cox’s Bazar, Bangladesh, December 21--22, 2025.
+
+\item \textbf{S. Pramanik, A. Chawdhury, P. Biswas, S. Bhattacharjee}, “Enhancing Genre Fidelity in Children’s Story Generation via Fine-Tuned LLMs,” \textit{Proceedings of the International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN 2025)}, Rangpur, Bangladesh.
+
+\end{itemize}
+
+% \section{Leadership \& Professional Involvement}
+% \begin{highlights}
+% \item \textbf{Student Advisor}, IEEE Industry Applications Society (IAS) DIU Student Branch Chapter, 2025 -- Present
+% \item \textbf{Speaker}, Seminar on ``Write to Publish - Research Paper and LaTeX Mastery'', IEEE IAS DIU Student Branch Chapter, 2026
+% \end{highlights}
+
+\section{Leadership \& Professional Involvement}
+
+\begin{twocolentry}{\textit{2025 -- Present}}
+\textbf{Student Advisor}, IEEE Industry Applications Society (IAS) DIU Student Branch Chapter \hfill 2026
+\end{twocolentry}
+
+\vspace{0.05 cm}
+\begin{onecolentry}
+\begin{highlights}
+\item Guided student members in technical and professional development activities within the IAS chapter.
+\item Supported organization of workshops, seminars, and collaborative initiatives focused on industry-relevant skills.
+\end{highlights}
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{twocolentry}{\textit{2026}}
+\textbf{Speaker}, Seminar on ``Write to Publish – Research Paper and LaTeX Mastery'' \hfill April 2026
+\end{twocolentry}
+
+\vspace{0.05 cm}
+\begin{onecolentry}
+\begin{highlights}
+\item Delivered a technical seminar on academic writing, research publication strategies, and LaTeX usage.
+\item Mentored participants on structuring research papers and improving publication readiness.
+\end{highlights}
+\end{onecolentry}
+
+% -------------------- ACHIEVEMENTS --------------------
+\section*{Achievements}
+\begin{highlights}
+\item \textbf{Top 2\% Paper}, ICCIT 2025
+\item 1st Runners-Up, DIU Division of Research Poster Presentation 2025
+\item ICAI Campus Ambassador — Bangladesh (2025)
+% \item Best Film Award, CinemaKing International Film Festival (2023)
+\end{highlights}
+
+% -------------------- SKILLS --------------------
+
+
+% -------------------- SOFT SKILLS --------------------
+% \section{Soft Skills}
+% \begin{highlights}
+% \item Independent researcher with strong analytical thinking
+% \item Clear technical communication and academic writing ability
+% \item Open to feedback and iterative improvement
+% \end{highlights}
+
+\end{document}
