@@ -195,11 +195,11 @@ Secondary School Certificate (SSC)
 
     \justifying % This ensures the text spans the full width
     
-    \item \textbf{A. Chawdhury et al.}, “LoRGen: A Two-Stage LLM Framework for Human-Aligned LoR Generation via Efficient Fine-Tuning and Direct Preference Optimization,” \textit{Proceedings of the 28th International Conference on Computer and Information Technology (ICCIT 2025)}, Cox’s Bazar, Bangladesh. \textbf{Top 2\% Paper}. \vspace{0.25 cm}
+    \item \href{https://ieeexplore.ieee.org/document/11491508}{\textbf{A. Chawdhury et al.}, “LoRGen: A Two-Stage LLM Framework for Human-Aligned LoR Generation via Efficient Fine-Tuning and Direct Preference Optimization,” \textit{Proceedings of the 28th International Conference on Computer and Information Technology (ICCIT 2025)}, Cox’s Bazar, Bangladesh. \textbf{Top 2\% Paper}.} \vspace{0.25 cm}
 
-    \item \textbf{S. Pramanik, S. Bhattacharjee, T. Fouzder, A. A. Azad, A. Chawdhury}, “Enhancing Emotion Classification with Interpretability Using LoRA-Finetuned LLaMA-3.2-3B,” \textit{Accepted at the 11th IEEE International Women in Engineering Conference on Electrical and Computer Engineering (WIECON-ECE 2025)}, Cox’s Bazar, Bangladesh, December 21--22, 2025.
+    \item  \textbf{S. Pramanik, S. Bhattacharjee, T. Fouzder, A. A. Azad, A. Chawdhury}, “Enhancing Emotion Classification with Interpretability Using LoRA-Finetuned LLaMA-3.2-3B,” \textit{Accepted at the 11th IEEE International Women in Engineering Conference on Electrical and Computer Engineering (WIECON-ECE 2025)}, Cox’s Bazar, Bangladesh, December 21--22, 2025.
 \vspace{0.25 cm}
-    \item \textbf{S. Pramanik, A. Chawdhury, P. Biswas, S. Bhattacharjee}, “Enhancing Genre Fidelity in Children’s Story Generation via Fine-Tuned LLMs,” \textit{Proceedings of the International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN 2025)}, Rangpur, Bangladesh.
+    \item \href{https://ieeexplore.ieee.org/document/11171897}{\textbf{S. Pramanik, A. Chawdhury, P. Biswas, S. Bhattacharjee}, “Enhancing Genre Fidelity in Children’s Story Generation via Fine-Tuned LLMs,” \textit{Proceedings of the International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN 2025)}, Rangpur, Bangladesh.}
 
 
 \end{itemize}
