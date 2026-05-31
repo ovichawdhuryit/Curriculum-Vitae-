@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anik Chawdhury — EEE & AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0c10;
+      --bg2: #0f1218;
+      --bg3: #141820;
+      --card: #131720;
+      --border: #1e2530;
+      --accent: #00e5ff;
+      --accent2: #7c3aed;
+      --accent3: #10b981;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --mono: 'Space Mono', monospace;
+      --sans: 'Syne', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: .35;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 3rem;
+      background: rgba(10,12,16,.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: .85rem;
+      color: var(--accent);
+      letter-spacing: .08em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 3rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,.15) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,255,.1) 0%, transparent 70%);
+      bottom: 0; left: 10%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--accent);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1.hero-name {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin-bottom: .5rem;
+    }
+
+    .hero-name span { color: var(--accent); }
+
+    .hero-title {
+      font-family: var(--mono);
+      font-size: clamp(.85rem, 1.8vw, 1.1rem);
+      color: var(--muted);
+      margin-bottom: 2rem;
+      letter-spacing: .04em;
+    }
+
+    .hero-summary {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .75rem 1.8rem;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-contacts {
+      position: absolute;
+      right: 3rem;
+      bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+      align-items: flex-end;
+    }
+
+    .contact-link {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .08em;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      transition: color .2s;
+    }
+
+    .contact-link:hover { color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--accent);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 3rem;
+      letter-spacing: -.02em;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg2); max-width: 100%; padding: 6rem; }
+    #skills > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
+    #skills h2 { max-width: 1100px; margin: 0 auto 3rem; }
+    #skills .section-label { max-width: 1100px; margin: 0 auto 1rem; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .skill-card-title {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--accent);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: .7rem;
+      padding: .25rem .7rem;
+      border-radius: 2px;
+      background: rgba(0,229,255,.07);
+      color: #94a3b8;
+      border: 1px solid rgba(0,229,255,.15);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent2);
+      transform: translateX(4px);
+    }
+
+    .project-num {
+      font-family: var(--mono);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--border);
+      line-height: 1;
+      padding-top: .2rem;
+    }
+
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: .6rem;
+      color: var(--text);
+    }
+
+    .project-desc {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .project-desc li {
+      margin-bottom: .3rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .project-desc li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent3);
+      font-size: .7rem;
+      top: .15rem;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .tag-purple {
+      background: rgba(124,58,237,.1);
+      border-color: rgba(124,58,237,.25);
+      color: #a78bfa;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .pub-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent3);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      transition: transform .2s;
+    }
+
+    .pub-card:hover { transform: translateX(4px); }
+
+    .pub-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: .65rem;
+      padding: .2rem .6rem;
+      border-radius: 2px;
+      background: rgba(16,185,129,.15);
+      color: var(--accent3);
+      border: 1px solid rgba(16,185,129,.3);
+      margin-bottom: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .pub-badge.top { background: rgba(245,158,11,.15); color: #fbbf24; border-color: rgba(245,158,11,.3); }
+
+    .pub-title {
+      font-size: .95rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    /* ── EXPERIENCE / LEADERSHIP ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: .5rem; bottom: .5rem;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 2.5rem 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: .4rem;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .timeline-date {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+      margin-bottom: .4rem;
+    }
+
+    .timeline-role {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+    }
+
+    .timeline-org {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: .7rem;
+    }
+
+    .timeline-desc {
+      font-size: .88rem;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .timeline-desc li {
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: .3rem;
+    }
+
+    .timeline-desc li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .ach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .ach-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .ach-card:hover {
+      border-color: #fbbf24;
+      transform: translateY(-2px);
+    }
+
+    .ach-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .ach-text {
+      font-size: .88rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .ach-text strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: .2rem;
+      font-size: .9rem;
+    }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.4rem;
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      transition: border-color .2s;
+    }
+
+    .cert-item:hover { border-color: var(--accent2); color: var(--text); }
+
+    .cert-item::before {
+      content: '◈';
+      color: var(--accent2);
+      font-size: .9rem;
+    }
+
+    /* ── REFERENCES ── */
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .ref-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.8rem;
+    }
+
+    .ref-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+    }
+
+    .ref-role {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: .8rem;
+      line-height: 1.5;
+    }
+
+    .ref-email {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ── SCROLL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { padding: 6rem 1.5rem 3rem; }
+      section { padding: 4rem 1.5rem; }
+      #skills { padding: 4rem 1.5rem; }
+      .hero-contacts { position: static; margin-top: 2rem; align-items: flex-start; }
+      .project-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">AC<span style="color:var(--muted)">// EEE & AI</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:100%; padding-top:0;">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">EEE · AI · IoT · Research</div>
+    <h1 class="hero-name">Anik<br><span>Chawdhury</span></h1>
+    <p class="hero-title">B.Sc. EEE · Daffodil International University · Expected June 2026</p>
+    <p class="hero-summary">
+      Electrical &amp; Electronics Engineering student building intelligent systems at the intersection
+      of AI, embedded technologies, and energy. Research-driven. Hands-on. Published.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#publications" class="btn btn-ghost">Publications</a>
+      <a href="mailto:chawdhury22205131115@diu.edu.bd" class="btn btn-ghost">Contact</a>
+    </div>
+  </div>
+  <div class="hero-contacts">
+    <a class="contact-link" href="mailto:chawdhury22205131115@diu.edu.bd">✉ chawdhury22205131115@diu.edu.bd</a>
+    <a class="contact-link" href="tel:+8801613718077">☏ 01613-718077</a>
+    <a class="contact-link" href="https://github.com" target="_blank">⌥ GitHub</a>
+    <a class="contact-link" href="https://linkedin.com" target="_blank">⌁ LinkedIn</a>
+    <a class="contact-link" href="#" target="_blank">◈ Google Site</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<div id="skills" style="background:var(--bg2);">
+  <div class="section-label reveal">Skills</div>
+  <h2 class="reveal" style="max-width:1100px;margin:0 auto 3rem;">Technical Stack</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Programming</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">C++</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">Embedded C</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">AI & Machine Learning</div>
+      <div class="skill-tags">
+        <span class="tag">Transformers</span>
+        <span class="tag">PEFT / LoRA</span>
+        <span class="tag">LLaMA-2</span>
+        <span class="tag">DPO</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Machine Learning</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Tools & Platforms</div>
+      <div class="skill-tags">
+        <span class="tag">Google Colab</span>
+        <span class="tag">Jupyter Notebook</span>
+        <span class="tag">VS Code</span>
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Hardware & IoT</div>
+      <div class="skill-tags">
+        <span class="tag">Arduino</span>
+        <span class="tag">ESP32</span>
+        <span class="tag">ESP8266</span>
+        <span class="tag">Sensor Integration</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Design & Media</div>
+      <div class="skill-tags">
+        <span class="tag">Canva</span>
+        <span class="tag">Adobe Illustrator</span>
+        <span class="tag">Adobe Premiere Pro</span>
+        <span class="tag">LaTeX</span>
+        <span class="tag">AutoCAD</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Soft Skills</div>
+      <div class="skill-tags">
+        <span class="tag">Fast Typing</span>
+        <span class="tag">Team Collaboration</span>
+        <span class="tag">Communication</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Event Coordination</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Projects</div>
+  <h2 class="reveal">What I've Built</h2>
+  <div class="projects-list">
+
+    <div class="project-card reveal">
+      <div class="project-num">01</div>
+      <div>
+        <div class="project-title">LoRGen: Two-Stage LLM Framework for Human-Aligned Letter of Recommendation Generation</div>
+        <ul class="project-desc">
+          <li>Developed a two-stage LoR generation framework combining supervised fine-tuning (SFT) and Direct Preference Optimization (DPO).</li>
+          <li>Improved personalization, tone consistency, and contextual coherence through preference-based optimization.</li>
+          <li>Published as Top 2% Paper at ICCIT 2025.</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag tag-purple">LLM</span>
+          <span class="tag tag-purple">DPO</span>
+          <span class="tag tag-purple">PEFT</span>
+          <span class="tag tag-purple">Fine-Tuning</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">02</div>
+      <div>
+        <div class="project-title">Enhancing Genre Fidelity in Children's Story Generation via Fine-Tuned LLMs</div>
+        <ul class="project-desc">
+          <li>Designed a genre-conditioned story generation framework using LLaMA-2 (7B) fine-tuned with PEFT-LoRA.</li>
+          <li>Evaluated genre adherence using a transformer-based classifier.</li>
+          <li>Developed evaluation workflows for genre classification and response quality analysis.</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag tag-purple">LLaMA-2</span>
+          <span class="tag tag-purple">LoRA</span>
+          <span class="tag tag-purple">NLP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">03</div>
+      <div>
+        <div class="project-title">Prompt-Engineered Student Support Chatbot for Academic Guidance</div>
+        <ul class="project-desc">
+          <li>Developed an AI-powered chatbot for academic guidance and personalized supervisor recommendations.</li>
+          <li>Designed prompt-engineering workflows to improve contextual understanding and response relevance.</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag tag-purple">Prompt Engineering</span>
+          <span class="tag tag-purple">AI</span>
+          <span class="tag tag-purple">Chatbot</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">04</div>
+      <div>
+        <div class="project-title">AI-Controlled IoT Smart EV Solar Charging with Hybrid Technology & Protection System</div>
+        <ul class="project-desc">
+          <li>Developed an intelligent EV charging and protection framework with real-time monitoring and fault detection.</li>
+          <li>Implemented over-voltage and over-current protection using sensor-driven control logic.</li>
+          <li>Integrated hybrid charging architecture for improved efficiency and safety.</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">IoT</span>
+          <span class="tag">ESP32</span>
+          <span class="tag">Solar</span>
+          <span class="tag">EV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">05</div>
+      <div>
+        <div class="project-title">Smart Agriculture Monitoring System</div>
+        <ul class="project-desc">
+          <li>Built an IoT-based system for remote monitoring of soil moisture and environmental conditions.</li>
+          <li>Enabled real-time data monitoring using sensor integration and wireless communication.</li>
+          <li>Tools: ESP8266, Arduino IDE, Embedded C.</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">ESP8266</span>
+          <span class="tag">Arduino</span>
+          <span class="tag">IoT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">06</div>
+      <div>
+        <div class="project-title">Magnetic Levitation Prototype</div>
+        <ul class="project-desc">
+          <li>Implemented a closed-loop electromagnetic levitation prototype using sensor feedback control.</li>
+          <li>Developed hardware circuitry for stable levitation with sensor-based control mechanisms.</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Control Systems</span>
+          <span class="tag">Embedded</span>
+          <span class="tag">Hardware</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PUBLICATIONS -->
+<section id="publications" style="background:var(--bg2); max-width:100%; padding: 6rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label reveal">Research</div>
+    <h2 class="reveal">Publications</h2>
+    <div class="pub-list">
+
+      <div class="pub-card reveal">
+        <span class="pub-badge top">★ Top 2% Paper</span>
+        <div class="pub-title">LoRGen: A Two-Stage LLM Framework for Human-Aligned LoR Generation via Efficient Fine-Tuning and Direct Preference Optimization</div>
+        <div class="pub-venue">A. Chawdhury et al. — 28th International Conference on Computer and Information Technology (ICCIT 2025), Cox's Bazar, Bangladesh</div>
+      </div>
+
+      <div class="pub-card reveal">
+        <span class="pub-badge">IEEE WIECON-ECE 2025</span>
+        <div class="pub-title">Enhancing Emotion Classification with Interpretability Using LoRA-Finetuned LLaMA-3.2-3B</div>
+        <div class="pub-venue">S. Pramanik, S. Bhattacharjee, T. Fouzder, A. A. Azad, A. Chawdhury — 11th IEEE International Women in Engineering Conference on ECE, Cox's Bazar, December 21–22, 2025</div>
+      </div>
+
+      <div class="pub-card reveal">
+        <span class="pub-badge">QPAIN 2025</span>
+        <div class="pub-title">Enhancing Genre Fidelity in Children's Story Generation via Fine-Tuned LLMs</div>
+        <div class="pub-venue">S. Pramanik, A. Chawdhury, P. Biswas, S. Bhattacharjee — International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN 2025), Rangpur, Bangladesh</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="section-label reveal">Experience</div>
+  <h2 class="reveal">Leadership & Activities</h2>
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2026</div>
+      <div class="timeline-role">Student Advisor</div>
+      <div class="timeline-org">IEEE Industry Applications Society (IAS) — DIU Student Branch Chapter</div>
+      <ul class="timeline-desc">
+        <li>Guided student members in technical and professional development activities.</li>
+        <li>Supported organization of workshops, seminars, and collaborative industry-relevant initiatives.</li>
+        <li>Supported communication and coordination among student teams.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">April 2026</div>
+      <div class="timeline-role">Speaker — "Write to Publish: Research Paper & LaTeX Mastery"</div>
+      <div class="timeline-org">Seminar · Daffodil International University</div>
+      <ul class="timeline-desc">
+        <li>Delivered technical seminar on academic writing, research publication strategies, and LaTeX usage.</li>
+        <li>Mentored participants on structuring research papers and improving publication readiness.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2025</div>
+      <div class="timeline-role">Deputy Joint Secretary</div>
+      <div class="timeline-org">DIU Film Society</div>
+      <ul class="timeline-desc">
+        <li>Assisted executive committee in planning and executing club events, screenings, and cultural programs.</li>
+        <li>Coordinated communication between organizing teams and managed operational responsibilities.</li>
+        <li>Supported event logistics, member engagement, and internal administrative tasks.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2024</div>
+      <div class="timeline-role">Campus Ambassador — Bangladesh</div>
+      <div class="timeline-org">ICAI (International Center for AI)</div>
+      <ul class="timeline-desc">
+        <li>Promoted AI-related educational initiatives and student engagement activities.</li>
+        <li>Coordinated communication between student communities and organizational teams.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" style="background:var(--bg2); max-width:100%; padding: 6rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label reveal">Honors</div>
+    <h2 class="reveal">Achievements</h2>
+    <div class="ach-grid">
+      <div class="ach-card reveal">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-text"><strong>Top 2% Paper Award</strong>ICCIT 2025 — LoRGen Framework</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🥈</div>
+        <div class="ach-text"><strong>1st Runners-Up</strong>DIU Division Research Poster Presentation 2025</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🥉</div>
+        <div class="ach-text"><strong>2nd Runners-Up</strong>Engineering Day Project Showcase, DIU 2025</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🤖</div>
+        <div class="ach-text"><strong>4th Runners-Up</strong>AgentX – AI Prompting Competition 2025</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🌐</div>
+        <div class="ach-text"><strong>ICAI Campus Ambassador</strong>Bangladesh, 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label reveal">Training</div>
+  <h2 class="reveal">Certifications & Training</h2>
+  <div class="cert-list">
+    <div class="cert-item reveal">Industrial Training Program — Ghorashal Training Center</div>
+    <div class="cert-item reveal">AutoCAD Workshop — Creative IT Institute</div>
+    <div class="cert-item reveal">Industrial Automation Technology Workshop — Ulterior Engineering</div>
+    <div class="cert-item reveal">IEEE Technical Workshop Participation</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REFERENCES / CONTACT -->
+<section id="contact" style="background:var(--bg2); max-width:100%; padding: 6rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="reveal">References & Contact</h2>
+    <div class="ref-grid" style="margin-bottom:3rem;">
+      <div class="ref-card reveal">
+        <div class="ref-name">Dr. Tama Fouzder</div>
+        <div class="ref-role">Thesis Supervisor<br>Associate Professor, Dept. of EEE<br>Daffodil International University</div>
+        <a class="ref-email" href="mailto:tamafouzder.eee@diu.edu.bd">tamafouzder.eee@diu.edu.bd</a>
+      </div>
+      <div class="ref-card reveal">
+        <div class="ref-name">Sudipto Pramanik</div>
+        <div class="ref-role">Research Collaborator & Lecturer<br>Dept. of EEE<br>Daffodil International University</div>
+        <a class="ref-email" href="mailto:sudipto.eee0247.c@diu.edu.bd">sudipto.eee0247.c@diu.edu.bd</a>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:1rem;" class="reveal">
+      <a href="mailto:chawdhury22205131115@diu.edu.bd" class="btn btn-primary">Send Email</a>
+      <a href="https://github.com" target="_blank" class="btn btn-ghost">GitHub</a>
+      <a href="https://linkedin.com" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="#" target="_blank" class="btn btn-ghost">Google Site</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & built by <span>Anik Chawdhury</span> · Dhaka, Bangladesh · <span>2026</span></p>
+  <p style="margin-top:.5rem; font-size:.65rem;">EEE · AI · IoT · Research</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) cur = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
